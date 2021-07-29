@@ -15,14 +15,14 @@ public class ConsoleApp implements CommandLineRunner {
   @Autowired
   VehicleConfig vehicleConfig;
 
-  public ConsoleApp( @Qualifier("Bike") Vehicle vehicle){
-    vehicle.run();
-  }
+  @Autowired
+  Vehicle vehicle;
 
   @Override
   public void run(String... args) throws Exception {
     log.info("ConsoleApp.run");
-    log.info("rain="+String.valueOf(vehicleConfig.rain));
+    log.info("rain=" + String.valueOf(vehicleConfig.rain));
+    vehicle.run();
     System.exit(0);
   }
 }
